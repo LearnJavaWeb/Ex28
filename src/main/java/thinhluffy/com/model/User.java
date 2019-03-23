@@ -5,13 +5,28 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import javax.persistence.*;
+
 @Component
+@Entity
+@Table(name = "users")
 public class User implements Validator {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String lastName;
     private String firstName;
     private String number;
     private String email;
     private int age;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getAge() {
         return age;
